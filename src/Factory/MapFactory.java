@@ -1,22 +1,32 @@
 package Factory;
 
-public class MapFactory {
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.TreeMap;
+import java.util.Map;
 
-    public Map getMap(String mapType){
-        if (mapType == null){
-            return null;
+public class MapFactory<Key,Value> {
+
+    public Map<Key,Value> createMap(int op){
+        if (op == 1){
+            return new HashMap<Key,Value>();
+
+        } else if (op == 2){
+            return new TreeMap<Key,Value>();
+
+        } else {
+            return new LinkedHashMap<Key,Value>();
         }
-        if (mapType.equalsIgnoreCase("Hashmap")){
-            return new Hashmap();
 
-        } else if (mapType.equalsIgnoreCase("Treemap")){
-            return new Treemap();
+    }
 
-        } else if (mapType.equalsIgnoreCase("LinkedHashmap")){
-            return new LinkedHashmap();
-
+    public Map<String,Integer> createCantMap(int op){
+        if (op == 1) {
+            return new HashMap<String, Integer>();
+        }else if (op == 2){
+            return new TreeMap<String, Integer>();
+        }else {
+            return new LinkedHashMap<String,Integer>();
         }
-        return null;
-
     }
 }
